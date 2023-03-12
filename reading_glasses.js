@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        reading_glasses
-// @namespace   https://github.com/floppydiskette
+// @namespace   Violentmonkey Scripts
 // @match       *://*/*
 // @grant       none
 // @version     1.0
@@ -16,6 +16,10 @@ function boldenLetters(tag) {
     let tag_mode = 0;
 
       for (let j = 0; j < words.length; j++) {
+        if (words[j].startsWith("&")) {
+          continue;
+        }
+
         if (words[j].startsWith("<") && tag_mode === 0) {
           tag_mode = 1;
         }
